@@ -13,7 +13,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  height: 100vh;
+
+
+  /* VARS */
+  --color-gray: #444444;
 }
+
 
 a {
   font-weight: 500;
