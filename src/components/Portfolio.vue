@@ -36,7 +36,7 @@ function routeTabs(route) {
 .tabs {
   display: flex;
   margin: 0 auto;
-  padding: 4px;
+  padding: 1rem;
   width: 60%;
   justify-content: space-around;
   text-decoration: underline;

@@ -27,6 +27,6 @@
   justify-content: center;
   align-content: center;
   text-align: center;
-  margin: 0 5em;
+  margin: 5em;
 }
 </style>
