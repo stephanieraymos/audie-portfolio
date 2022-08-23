@@ -1,7 +1,9 @@
 <template>
-  <header-row />
-  <about-me />
-  <portfolio />
+  <div>
+    <header-row />
+    <about-me />
+    <portfolio />
+  </div>
 </template>
 
 <script setup>
