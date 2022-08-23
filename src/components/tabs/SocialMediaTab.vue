@@ -1,9 +1,29 @@
 <template>
   <div>
-    <h1>SOCIAL MEDIA</h1>
+    <div class="container">
+      <div v-for="social in socials" :key="social.title" class="social">
+        <div class="title">{{ social.title }}</div>
+        <img class="image" :src="`images/${social.src}.jpg`" :alt="social.src" />
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const socials = [
+  { title: "Some Title", src: "headshot" },
+  { title: "Another Title", src: "headshot" },
+];
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+  display: flex;
+}
+.social {
+  margin: 10px;
+}
+.image {
+  width: 200px;
+}
+</style>
