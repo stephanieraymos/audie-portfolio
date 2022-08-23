@@ -1,35 +1,38 @@
 <template>
   <div class="container">
     <div class="tabs">
-      <!-- <span
+      <span
         v-for="tab in tabs"
         :key="tab"
-        @click="routeTabs(tab.route)"
+        @click="routeTabs(tab.component)"
         class="tab"
-      > -->
-      <router-link v-for="tab in tabs"
-        :key="tab"
-        @click="routeTabs(tab.route)"
-        class="tab" :to="`${tab.route}`"> {{tab.title}} </router-link>
-      <!-- </span> -->
+      >
+        {{ tab.title }}
+      </span>
     </div>
 
-     <router-view></router-view>
+    <component :is="activeTab" />
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import LogoTab from "./tabs/LogoTab.vue";
+import MapsTab from "./tabs/MapsTab.vue";
+import SignsTab from "./tabs/SignsTab.vue";
+import SocialMediaTab from "./tabs/SocialMediaTab.vue";
 
 const tabs = ref([
-  { title: "Logos", route: "/logos" },
-  { title: "Maps", route: "/maps" },
-  { title: "Signs", route: "/signs" },
-  { title: "Social Media", route: "/social-media" },
+  { title: "Logos", component: LogoTab },
+  { title: "Maps", component: MapsTab },
+  { title: "Signs", component: SignsTab },
+  { title: "Social Media", component: SocialMediaTab },
 ]);
+const activeTab = ref(null);
 
-function routeTabs(route) {
-  return console.log("route", route);
+function routeTabs(component) {
+  activeTab.value = component;
+  console.log("component", component);
 }
 </script>
 
