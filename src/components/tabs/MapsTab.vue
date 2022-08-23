@@ -19,6 +19,8 @@ const maps = [
 <style lang="scss" scoped>
 .container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .map {
   margin: 10px;

@@ -19,6 +19,8 @@ const socials = [
 <style lang="scss" scoped>
 .container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .social {
   margin: 10px;

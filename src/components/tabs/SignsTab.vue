@@ -19,6 +19,8 @@ const signs = [
 <style lang="scss" scoped>
 .container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .sign {
   margin: 10px;

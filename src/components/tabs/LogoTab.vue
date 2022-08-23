@@ -13,13 +13,17 @@
 const logos = [
   { title: "Some Title", src: "headshot" },
   { title: "Another Title", src: "headshot" },
+  { title: "Another Title", src: "headshot" },
+  { title: "Another Title", src: "headshot" },
+  { title: "Another Title", src: "headshot" },
 ];
 </script>
 
 <style lang="scss" scoped>
 .container {
   display: flex;
-
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .logo {
   margin: 10px;
