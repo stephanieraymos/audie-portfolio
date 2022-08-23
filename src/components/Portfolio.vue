@@ -4,8 +4,9 @@
       <span
         v-for="tab in tabs"
         :key="tab"
-        @click="routeTabs(tab.component)"
+        @click="routeTabs(tab)"
         class="tab"
+        :class="{ activeTab: tab.active }"
       >
         {{ tab.title }}
       </span>
@@ -23,30 +24,42 @@ import SignsTab from "./tabs/SignsTab.vue";
 import SocialMediaTab from "./tabs/SocialMediaTab.vue";
 
 const tabs = ref([
-  { title: "Logos", component: LogoTab },
-  { title: "Maps", component: MapsTab },
-  { title: "Signs", component: SignsTab },
-  { title: "Social Media", component: SocialMediaTab },
+  { title: "Logos", component: LogoTab, active: true },
+  { title: "Maps", component: MapsTab, active: false },
+  { title: "Signs", component: SignsTab, active: false },
+  { title: "Social Media", component: SocialMediaTab, active: false },
 ]);
-const activeTab = ref(null);
+const activeTab = ref(LogoTab);
 
-function routeTabs(component) {
-  activeTab.value = component;
-  console.log("component", component);
+function routeTabs(tab) {
+  tab.active = true;
+  tabs.value.map((i) => {
+    if (i !== tab) {
+      i.active = false;
+    }
+  });
+  activeTab.value = tab.component;
+  console.log("component", tab);
 }
 </script>
 
 <style lang="scss" scoped>
 .container {
   background: var(--color-gray);
-  height: 50vh;
+  // height: 50vh;
 }
 .tabs {
   display: flex;
   margin: 0 auto;
-  padding: 1rem;
   width: 60%;
   justify-content: space-around;
-  text-decoration: underline;
+}
+.activeTab {
+  background: purple;
+}
+.tab {
+  padding: 0.5rem 1rem;
+  height: 100%;
+  cursor: pointer;
 }
 </style>
