@@ -16,26 +16,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../components/AboutMe.vue"),
   },
-  {
-    path: "/logos",
-    name: "Logos",
-    component: () => import("../components/tabs/LogoTab.vue"),
-  },
-  {
-    path: "/maps",
-    name: "Maps",
-    component: () => import("../components/tabs/MapsTab.vue"),
-  },
-  {
-    path: "/social-media",
-    name: "Social Media",
-    component: () => import("../components/tabs/SocialMediaTab.vue"),
-  },
-  {
-    path: "/signs",
-    name: "Signs",
-    component: () => import("../components/tabs/SignsTab.vue"),
-  },
 ];
 const router = createRouter({
   history: createWebHistory(),
