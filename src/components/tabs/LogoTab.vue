@@ -20,7 +20,7 @@ const logos = [
   { title: "Bakersfield", src: "Bakersfield.png" },
   { title: "Blue Haven", src: "Blue-Haven.png" },
   { title: "Cortez", src: "Cortez-Logo.png" },
-  { title: "Another Title", src: "Glenbrook.jpg" },
+  { title: "Glenbrook", src: "Glenbrook.jpg" },
   { title: "Greenspot", src: "Greenspot.png" },
   { title: "Pioneer", src: "Pioneer-logo.png" },
   { title: "Shady Grove", src: "Shady_Grove.png" },
