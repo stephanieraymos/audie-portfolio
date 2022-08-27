@@ -3,7 +3,7 @@
     <div class="container">
       <div v-for="logo in logos" :key="logo.title" class="logo">
         <div class="title">{{ logo.title }}</div>
-        <img class="image" :src="`images/Logos/${logo.src}`" :alt="logo.src" />
+        <img class="image" :src="`images/Logos/${logo.src}`" :alt="logo.src" rel="preload"/>
       </div>
     </div>
   </div>
@@ -20,6 +20,7 @@ const logos = [
   { title: "Pioneer", src: "Pioneer-logo.png" },
   { title: "Shady Grove", src: "Shady_Grove.png" },
   { title: "Sunrise MHP", src: "SunriseMHP-logo.png" },
+  { title: "Pollock Pines", src: "PollockPines.png" },
 ];
 </script>
 

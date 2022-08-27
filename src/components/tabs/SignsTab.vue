@@ -3,7 +3,7 @@
     <div class="container">
       <div v-for="sign in signs" :key="sign.title" class="sign">
         <div class="title">{{ sign.title }}</div>
-        <img class="image" :src="`images/${sign.src}.jpg`" :alt="sign.src" />
+        <img class="image" :src="`images/Signs/${sign.src}.png`" :alt="sign.src" rel="preload"/>
       </div>
     </div>
   </div>
@@ -11,8 +11,11 @@
 
 <script setup>
 const signs = [
-  { title: "Some Title", src: "headshot" },
-  { title: "Another Title", src: "headshot" },
+  { title: "Imperial Estates", src: "IE-sign" },
+  { title: "Pioneer", src: "Pioneer-Sign" },
+  { title: "Ponderosa", src: "Ponderosa-MHP" },
+  { title: "Ridgeview", src: "Ridgeview-BB2" },
+  { title: "Tye RV", src: "TyeRV_East_BB" },
 ];
 </script>
 
@@ -27,5 +30,8 @@ const signs = [
 }
 .image {
   width: 200px;
+}
+.title {
+  text-align: center;
 }
 </style>
