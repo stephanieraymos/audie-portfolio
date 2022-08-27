@@ -45,10 +45,11 @@ function routeTabs(tab) {
 .container {
   background: var(--color-gray);
   // height: 50vh;
+  padding-bottom: 2em;
 }
 .tabs {
   display: flex;
-  margin: 0 auto;
+  margin: 0 auto 2em auto;
   width: 60%;
   justify-content: space-around;
 }

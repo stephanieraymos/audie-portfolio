@@ -3,7 +3,7 @@
     <div class="container">
       <div v-for="map in maps" :key="map.title" class="map">
         <div class="title">{{ map.title }}</div>
-        <img class="image" :src="`images/Maps/${map.src}.png`" :alt="map.src" rel="preload"/>
+        <img class="image" :src="`images/Maps/${map.src}.png`" :alt="map.src" />
       </div>
     </div>
   </div>
@@ -22,9 +22,11 @@ const maps = [
 
 <style lang="scss" scoped>
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto);
+  grid-gap: 15px;
+  justify-items: center;
 }
 .map {
   margin: 10px;
@@ -34,5 +36,6 @@ const maps = [
 }
 .title {
   text-align: center;
+  margin-bottom: 0.5em;
 }
 </style>

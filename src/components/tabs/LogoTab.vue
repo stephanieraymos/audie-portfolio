@@ -3,7 +3,7 @@
     <div class="container">
       <div v-for="logo in logos" :key="logo.title" class="logo">
         <div class="title">{{ logo.title }}</div>
-        <img class="image" :src="`images/Logos/${logo.src}`" :alt="logo.src" rel="preload"/>
+        <img class="image" :src="`images/Logos/${logo.src}`" :alt="logo.src" />
       </div>
     </div>
   </div>
@@ -26,9 +26,11 @@ const logos = [
 
 <style lang="scss" scoped>
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto);
+  grid-gap: 15px;
+  justify-items: center;
 }
 .logo {
   margin: 10px;
@@ -38,5 +40,6 @@ const logos = [
 }
 .title {
   text-align: center;
+  margin-bottom: 0.5em;
 }
 </style>

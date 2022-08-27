@@ -3,7 +3,11 @@
     <div class="container">
       <div v-for="sign in signs" :key="sign.title" class="sign">
         <div class="title">{{ sign.title }}</div>
-        <img class="image" :src="`images/Signs/${sign.src}.png`" :alt="sign.src" rel="preload"/>
+        <img
+          class="image"
+          :src="`images/Signs/${sign.src}.png`"
+          :alt="sign.src"
+        />
       </div>
     </div>
   </div>
@@ -21,9 +25,11 @@ const signs = [
 
 <style lang="scss" scoped>
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto);
+  grid-gap: 15px;
+  justify-items: center;
 }
 .sign {
   margin: 10px;
@@ -33,5 +39,6 @@ const signs = [
 }
 .title {
   text-align: center;
+  margin-bottom: 0.5em;
 }
 </style>
