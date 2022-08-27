@@ -55,7 +55,8 @@ function routeTabs(tab) {
   justify-content: space-around;
 }
 .activeTab {
-  background: purple;
+  background: var(--color-khaki);
+  color: black;
 }
 .tab {
   padding: 0.5rem 1rem;

@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-evenly;
   max-height: 300px;
-  background: var(--color-gray);
+  background: var(--color-khaki);
   div {
     width: 100%;
   }
