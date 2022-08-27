@@ -35,8 +35,9 @@
     text-align: center;
   }
   .name {
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     font-size: 3em;
+    line-height: 0.8em;
   }
   .title {
     font-size: 1.5em;

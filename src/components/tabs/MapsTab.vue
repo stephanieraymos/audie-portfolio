@@ -30,7 +30,7 @@ const maps = [
   padding-top: 2em;
   background: var(--color-khaki);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-template-rows: repeat(auto);
   grid-gap: 15px;
   justify-items: center;
@@ -39,7 +39,7 @@ const maps = [
   margin: 10px;
 }
 .image {
-  width: 200px;
+  width: 250px;
 }
 .title {
   text-align: center;
