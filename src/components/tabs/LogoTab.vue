@@ -3,7 +3,7 @@
     <div class="container">
       <div v-for="logo in logos" :key="logo.title" class="logo">
         <div class="title">{{ logo.title }}</div>
-        <img class="image" :src="`images/${logo.src}.jpg`" :alt="logo.src" />
+        <img class="image" :src="`images/Logos/${logo.src}`" :alt="logo.src" />
       </div>
     </div>
   </div>
@@ -11,11 +11,15 @@
 
 <script setup>
 const logos = [
-  { title: "Some Title", src: "headshot" },
-  { title: "Another Title", src: "headshot" },
-  { title: "Another Title", src: "headshot" },
-  { title: "Another Title", src: "headshot" },
-  { title: "Another Title", src: "headshot" },
+  { title: "Acres of Paradise", src: "AOP-logo.png" },
+  { title: "Bakersfield", src: "Bakersfield.png" },
+  { title: "Blue Haven", src: "Blue-Haven.png" },
+  { title: "Cortez", src: "Cortez-Logo.png" },
+  { title: "Another Title", src: "Glenbrook.jpg" },
+  { title: "Greenspot", src: "Greenspot.png" },
+  { title: "Pioneer", src: "Pioneer-logo.png" },
+  { title: "Shady Grove", src: "Shady_Grove.png" },
+  { title: "Sunrise MHP", src: "SunriseMHP-logo.png" },
 ];
 </script>
 
@@ -30,5 +34,8 @@ const logos = [
 }
 .image {
   width: 200px;
+}
+.title {
+  text-align: center;
 }
 </style>

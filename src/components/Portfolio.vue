@@ -21,13 +21,11 @@ import { ref } from "vue";
 import LogoTab from "./tabs/LogoTab.vue";
 import MapsTab from "./tabs/MapsTab.vue";
 import SignsTab from "./tabs/SignsTab.vue";
-import SocialMediaTab from "./tabs/SocialMediaTab.vue";
 
 const tabs = ref([
   { title: "Logos", component: LogoTab, active: true },
   { title: "Maps", component: MapsTab, active: false },
   { title: "Signs", component: SignsTab, active: false },
-  { title: "Social Media", component: SocialMediaTab, active: false },
 ]);
 const activeTab = ref(LogoTab);
 
