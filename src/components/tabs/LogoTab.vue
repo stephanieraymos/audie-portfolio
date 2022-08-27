@@ -3,7 +3,12 @@
     <div class="container">
       <div v-for="logo in logos" :key="logo.title" class="logo">
         <div class="title">{{ logo.title }}</div>
-        <img class="image" :src="`images/Logos/${logo.src}`" :alt="logo.src" loading="lazy"/>
+        <img
+          class="image"
+          :src="`images/Logos/${logo.src}`"
+          :alt="logo.src"
+          loading="lazy"
+        />
       </div>
     </div>
   </div>
@@ -26,6 +31,8 @@ const logos = [
 
 <style lang="scss" scoped>
 .container {
+  padding-top: 2em;
+  background: var(--color-khaki);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(auto);
@@ -40,6 +47,7 @@ const logos = [
 }
 .title {
   text-align: center;
+  color: black;
   margin-bottom: 0.5em;
 }
 </style>

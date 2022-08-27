@@ -49,7 +49,7 @@ function routeTabs(tab) {
 }
 .tabs {
   display: flex;
-  margin: 0 auto 2em auto;
+  margin: 0 auto;
   width: 60%;
   justify-content: space-around;
 }

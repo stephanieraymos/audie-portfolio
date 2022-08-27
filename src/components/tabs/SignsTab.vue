@@ -6,7 +6,8 @@
         <img
           class="image"
           :src="`images/Signs/${sign.src}.png`"
-          :alt="sign.src" loading="lazy"
+          :alt="sign.src"
+          loading="lazy"
         />
       </div>
     </div>
@@ -25,6 +26,8 @@ const signs = [
 
 <style lang="scss" scoped>
 .container {
+  padding-top: 2em;
+  background: var(--color-khaki);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(auto);
@@ -39,6 +42,7 @@ const signs = [
 }
 .title {
   text-align: center;
+  color: black;
   margin-bottom: 0.5em;
 }
 </style>
