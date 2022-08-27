@@ -3,7 +3,7 @@
     <div class="container">
       <div v-for="logo in logos" :key="logo.title" class="logo">
         <div class="title">{{ logo.title }}</div>
-        <img class="image" :src="`images/Logos/${logo.src}`" :alt="logo.src" />
+        <img class="image" :src="`images/Logos/${logo.src}`" :alt="logo.src" loading="lazy"/>
       </div>
     </div>
   </div>

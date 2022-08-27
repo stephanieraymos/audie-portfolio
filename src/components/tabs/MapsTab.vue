@@ -3,7 +3,7 @@
     <div class="container">
       <div v-for="map in maps" :key="map.title" class="map">
         <div class="title">{{ map.title }}</div>
-        <img class="image" :src="`images/Maps/${map.src}.png`" :alt="map.src" />
+        <img class="image" :src="`images/Maps/${map.src}.png`" :alt="map.src" loading="lazy"/>
       </div>
     </div>
   </div>

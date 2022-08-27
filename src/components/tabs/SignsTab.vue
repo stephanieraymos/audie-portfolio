@@ -6,7 +6,7 @@
         <img
           class="image"
           :src="`images/Signs/${sign.src}.png`"
-          :alt="sign.src"
+          :alt="sign.src" loading="lazy"
         />
       </div>
     </div>
