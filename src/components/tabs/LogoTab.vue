@@ -1,53 +1,70 @@
 <template>
   <div>
-    <div class="container">
-      <div v-for="logo in logos" :key="logo.title" class="logo">
-        <div class="title">{{ logo.title }}</div>
+    <div v-if="loading">Loading images ...</div>
+    <Carousel :items-to-show="1.5" :wrap-around="true">
+      <Slide v-for="(logo, index) in logos" :key="index" class="carousel__item">
         <img
-          class="image"
-          :src="`images/Logos/${logo.src}`"
+          :src="`images/Logos/${logo.src}.png`"
           :alt="logo.src"
+          ref="images"
           loading="lazy"
         />
-      </div>
-    </div>
+      </Slide>
+      <template #addons>
+        <Navigation />
+      </template>
+    </Carousel>
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Navigation } from "vue3-carousel";
+
 const logos = [
-  { title: "Acres of Paradise", src: "AOP-logo.png" },
-  { title: "Bakersfield", src: "Bakersfield.png" },
-  { title: "Blue Haven", src: "Blue-Haven.png" },
-  { title: "Cortez", src: "Cortez-Logo.png" },
-  { title: "Glenbrook", src: "Glenbrook.jpg" },
-  { title: "Greenspot", src: "Greenspot.png" },
-  { title: "Pioneer", src: "Pioneer-logo.png" },
-  { title: "Shady Grove", src: "Shady_Grove.png" },
-  { title: "Sunrise MHP", src: "SunriseMHP-logo.png" },
-  { title: "Pollock Pines", src: "PollockPines.png" },
+  { title: "Acres of Paradise", src: "AOP-logo" },
+  { title: "Bakersfield", src: "Bakersfield" },
+  { title: "Blue Haven", src: "Blue-Haven" },
+  { title: "Cortez", src: "Cortez-Logo" },
+  { title: "Greenspot", src: "Greenspot" },
+  { title: "Pioneer", src: "Pioneer-logo" },
+  { title: "Shady Grove", src: "Shady_Grove" },
+  { title: "Sunrise MHP", src: "SunriseMHP-logo" },
+  { title: "Pollock Pines", src: "PollockPines" },
 ];
+const imagesLoaded = ref(0);
+const loading = ref(true);
+
+const images = logos.map((logo) => new Image());
+
+images.forEach((image, index) => {
+  image.src = `images/Logos/${logos[index].src}.png`;
+  image.onload = () => {
+    imagesLoaded.value++;
+    if (imagesLoaded.value === logos.length) {
+      loading.value = false;
+    }
+  };
+});
 </script>
 
 <style lang="scss" scoped>
-.container {
-  padding-top: 2em;
-  background: var(--color-khaki);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-template-rows: repeat(auto);
-  grid-gap: 15px;
-  justify-items: center;
+.carousel__item {
+  display: flex;
+  min-height: 200px;
+  width: 100%;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
 }
-.map {
-  margin: 10px;
+
+.carousel__slide {
+  padding: 10px;
 }
-.image {
-  width: 250px;
-}
-.title {
-  text-align: center;
-  color: black;
-  margin-bottom: 0.5em;
+
+img {
+  width: 100%;
+  margin: 0 10px;
 }
 </style>

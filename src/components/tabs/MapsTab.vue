@@ -1,20 +1,26 @@
 <template>
   <div>
-    <div class="container">
-      <div v-for="map in maps" :key="map.title" class="map">
-        <div class="title">{{ map.title }}</div>
+    <div v-if="loading">Loading images ...</div>
+    <Carousel :items-to-show="1.5" :wrap-around="true">
+      <Slide v-for="(map, index) in maps" :key="index" class="carousel__item">
         <img
-          class="image"
           :src="`images/Maps/${map.src}.png`"
           :alt="map.src"
+          ref="images"
           loading="lazy"
         />
-      </div>
-    </div>
+      </Slide>
+      <template #addons>
+        <Navigation />
+      </template>
+    </Carousel>
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Navigation } from "vue3-carousel";
 const maps = [
   { title: "Alder Acres", src: "Alder-Acresmap" },
   { title: "Clarks Run", src: "Clarks-Run" },
@@ -23,27 +29,38 @@ const maps = [
   { title: "Holiday Manor", src: "Holiday-Manor-Map" },
   { title: "Monterey", src: "Monterey" },
 ];
+const imagesLoaded = ref(0);
+const loading = ref(true);
+
+const images = maps.map((map) => new Image());
+
+images.forEach((image, index) => {
+  image.src = `images/Maps/${maps[index].src}.png`;
+  image.onload = () => {
+    imagesLoaded.value++;
+    if (imagesLoaded.value === maps.length) {
+      loading.value = false;
+    }
+  };
+});
 </script>
 
 <style lang="scss" scoped>
-.container {
-  padding-top: 2em;
-  background: var(--color-khaki);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-template-rows: repeat(auto);
-  grid-gap: 15px;
-  justify-items: center;
+.carousel__item {
+  display: flex;
+  min-height: 200px;
+  width: 100%;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
 }
-.map {
-  margin: 10px;
+
+.carousel__slide {
+  padding: 10px;
 }
-.image {
-  width: 250px;
-}
-.title {
-  text-align: center;
-  color: black;
-  margin-bottom: 0.5em;
+
+img {
+  width: 100%;
+  margin: 0 10px;
 }
 </style>
