@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="loading">Loading images ...</div>
-    <Carousel :items-to-show="1.5" :wrap-around="true">
+    <Carousel :items-to-show="1.5" :wrap-around="true" v-if="!loading">
       <Slide v-for="(sign, index) in signs" :key="index" class="carousel__item">
         <div
           class="image-wrapper"
