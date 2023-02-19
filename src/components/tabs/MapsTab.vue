@@ -54,14 +54,6 @@ onMounted(() => {
     return img;
   });
 
-  // Access refs in next tick
-  // To ensure the DOM is updated before accessing them
-  this.$nextTick(() => {
-    const imageElements = this.$refs.images;
-    imageElements.forEach((element, index) => {
-      images.value[index].element = element;
-    });
-  });
 });
 </script>
 
