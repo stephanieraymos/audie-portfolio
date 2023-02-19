@@ -39,17 +39,29 @@ const maps = [
 const imagesLoaded = ref(0);
 const loading = ref(true);
 const showTitle = ref(false);
+const images = ref([]);
 
-const images = maps.map((map) => new Image());
+onMounted(() => {
+  images.value = maps.map((map) => {
+    const img = new Image();
+    img.src = `images/Maps/${map.src}.png`;
+    img.onload = () => {
+      imagesLoaded.value++;
+      if (imagesLoaded.value === maps.length) {
+        loading.value = false;
+      }
+    };
+    return img;
+  });
 
-images.forEach((image, index) => {
-  image.src = `images/Maps/${maps[index].src}.png`;
-  image.onload = () => {
-    imagesLoaded.value++;
-    if (imagesLoaded.value === maps.length) {
-      loading.value = false;
-    }
-  };
+  // Access refs in next tick
+  // To ensure the DOM is updated before accessing them
+  this.$nextTick(() => {
+    const imageElements = this.$refs.images;
+    imageElements.forEach((element, index) => {
+      images.value[index].element = element;
+    });
+  });
 });
 </script>
 

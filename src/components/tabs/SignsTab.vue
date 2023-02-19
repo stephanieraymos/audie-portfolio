@@ -39,17 +39,29 @@ const signs = [
 const imagesLoaded = ref(0);
 const loading = ref(true);
 const showTitle = ref(false);
+const images = ref([]);
 
-const images = signs.map((sign) => new Image());
+onMounted(() => {
+  images.value = signs.map((sign) => {
+    const img = new Image();
+    img.src = `images/Signs/${sign.src}.png`;
+    img.onload = () => {
+      imagesLoaded.value++;
+      if (imagesLoaded.value === signs.length) {
+        loading.value = false;
+      }
+    };
+    return img;
+  });
 
-images.forEach((image, index) => {
-  image.src = `images/Signs/${signs[index].src}.png`;
-  image.onload = () => {
-    imagesLoaded.value++;
-    if (imagesLoaded.value === signs.length) {
-      loading.value = false;
-    }
-  };
+  // Access refs in next tick
+  // To ensure the DOM is updated before accessing them
+  this.$nextTick(() => {
+    const imageElements = this.$refs.images;
+    imageElements.forEach((element, index) => {
+      images.value[index].element = element;
+    });
+  });
 });
 </script>
 
