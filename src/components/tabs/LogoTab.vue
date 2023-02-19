@@ -3,12 +3,19 @@
     <div v-if="loading">Loading images ...</div>
     <Carousel :items-to-show="1.5" :wrap-around="true">
       <Slide v-for="(logo, index) in logos" :key="index" class="carousel__item">
-        <img
-          :src="`images/Logos/${logo.src}.png`"
-          :alt="logo.src"
-          ref="images"
-          loading="lazy"
-        />
+        <div
+          class="image-wrapper"
+          @mouseenter="showTitle = true"
+          @mouseleave="showTitle = false"
+        >
+          <img
+            :src="`images/Logos/${logo.src}.png`"
+            :alt="logo.src"
+            ref="images"
+            loading="lazy"
+          />
+          <div class="title" v-if="showTitle">{{ logo.title }}</div>
+        </div>
       </Slide>
       <template #addons>
         <Navigation />
@@ -35,6 +42,8 @@ const logos = [
 ];
 const imagesLoaded = ref(0);
 const loading = ref(true);
+const showTitle = ref(false);
+
 
 const images = logos.map((logo) => new Image());
 
@@ -51,12 +60,35 @@ images.forEach((image, index) => {
 
 <style lang="scss" scoped>
 .carousel__item {
+  position: relative;
+
   display: flex;
   min-height: 200px;
   width: 100%;
   border-radius: 8px;
   justify-content: center;
   align-items: center;
+}
+.image-wrapper {
+  position: relative;
+}
+.title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel__item:hover .title {
+  display: flex;
 }
 
 .carousel__slide {
@@ -65,6 +97,5 @@ images.forEach((image, index) => {
 
 img {
   width: 100%;
-  margin: 0 10px;
 }
 </style>
