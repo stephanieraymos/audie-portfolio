@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loading">Loading images ...</div>
+    <div v-if="loading" class="loading">Loading images ...</div>
     <Carousel :items-to-show="1.5" :wrap-around="true" v-if="!loading">
       <Slide v-for="(sign, index) in signs" :key="index" class="carousel__item">
         <div
@@ -53,7 +53,6 @@ onMounted(() => {
     };
     return img;
   });
-
 });
 </script>
 
@@ -96,5 +95,11 @@ onMounted(() => {
 
 img {
   width: 100%;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
 </style>
